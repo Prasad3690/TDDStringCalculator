@@ -32,5 +32,11 @@ namespace StringCalculator.Tests
         {
             Assert.AreEqual(3, _calculator.Add("1,2"));
         }
+
+        [TestMethod]
+        public void Add_MultipleNumbers_ReturnsSum()
+        {
+            Assert.AreEqual(10, _calculator.Add("1,2,3,4"));
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace StringCalculator.App
                 return 0;
 
             var splitNumbers = numbers.Split(',');
-            return splitNumbers.Sum(int.Parse);
+            return splitNumbers.Select(int.Parse).Sum();
         }
     }
 }
