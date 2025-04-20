@@ -65,5 +65,23 @@ namespace StringCalculator.Tests
             _calculator.Add("3,4,5");
             Assert.AreEqual(2, _calculator.GetCalledCount());
         }
+
+        [TestMethod]
+        public void Add_EventFiresWithCorrectInputAndResult()
+        {
+            string receivedInput = null;
+            int receivedResult = 0;
+
+            _calculator.AddOccured += (input, result) =>
+            {
+                receivedInput = input;
+                receivedResult = result;
+            };
+
+            _calculator.Add("1,2");
+
+            Assert.AreEqual("1,2", receivedInput);
+            Assert.AreEqual(3, receivedResult);
+        }
     }
 }

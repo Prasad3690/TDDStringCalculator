@@ -11,6 +11,8 @@ namespace StringCalculator.App
     {
         private int callCount = 0;
 
+        public event Action<string, int> AddOccured; // Event declaration
+
         public int Add(string numbers)
         {
             callCount++;
@@ -38,7 +40,12 @@ namespace StringCalculator.App
                 throw new ArgumentException($"negatives not allowed: {string.Join(", ", negatives)}");
             }
 
-            return splitNumbers.Sum();
+            int sum = splitNumbers.Sum();
+
+            // Trigger event after Add() executes
+            AddOccured?.Invoke(numbers, sum);
+
+            return sum;
         }
 
         public int GetCalledCount()
