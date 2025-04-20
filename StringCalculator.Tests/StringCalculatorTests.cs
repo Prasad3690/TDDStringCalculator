@@ -95,5 +95,11 @@ namespace StringCalculator.Tests
         {
             Assert.AreEqual(6, _calculator.Add("//[***]\n1***2\n3"));
         }
+
+        [TestMethod]
+        public void Add_MultipleCustomDelimiters_ReturnsSum()
+        {
+            Assert.AreEqual(6, _calculator.Add("//[*][%]\n1*2%3"));
+        }
     }
 }

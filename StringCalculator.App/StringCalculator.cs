@@ -25,10 +25,13 @@ namespace StringCalculator.App
             // Check for custom delimiter
             if (numbers.StartsWith("//"))
             {
-                var match = Regex.Match(numbers, @"^//\[(.+?)\]\n");
+                var match = Regex.Match(numbers, @"^//(\[.*?\])+\n");
                 if (match.Success)
                 {
-                    delimiters.Add(match.Groups[1].Value); // Extract custom delimiter
+                    delimiters.AddRange(Regex.Matches(match.Groups[0].Value, @"\[(.*?)\]")
+                                   .Cast<Match>()
+                                   .Select(m => m.Groups[1].Value)
+                                   .ToArray());
                     numbers = numbers.Substring(match.Value.Length);
                 }
                 else
