@@ -20,5 +20,11 @@ namespace StringCalculator.Tests
         {
             Assert.AreEqual(0, _calculator.Add(""));
         }
+
+        [TestMethod]
+        public void Add_SingleNumber_ReturnsNumber()
+        {
+            Assert.AreEqual(1, _calculator.Add("1"));
+        }
     }
 }
