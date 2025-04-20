@@ -9,8 +9,12 @@ namespace StringCalculator.App
 {
     public class StringCalculator
     {
+        private int callCount = 0;
+
         public int Add(string numbers)
         {
+            callCount++;
+
             if (string.IsNullOrEmpty(numbers))
                 return 0;
 
@@ -35,6 +39,11 @@ namespace StringCalculator.App
             }
 
             return splitNumbers.Sum();
+        }
+
+        public int GetCalledCount()
+        {
+            return callCount;
         }
     }
 }
