@@ -14,7 +14,7 @@ namespace StringCalculator.App
             if (string.IsNullOrEmpty(numbers))
                 return 0;
 
-            var splitNumbers = numbers.Split(',');
+            var splitNumbers = numbers.Split(new[] { ',', '\n' }, StringSplitOptions.None);
             return splitNumbers.Select(int.Parse).Sum();
         }
     }

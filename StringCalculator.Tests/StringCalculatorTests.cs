@@ -38,5 +38,11 @@ namespace StringCalculator.Tests
         {
             Assert.AreEqual(10, _calculator.Add("1,2,3,4"));
         }
+
+        [TestMethod]
+        public void Add_NewlineBetweenNumbers_ReturnsSum()
+        {
+            Assert.AreEqual(6, _calculator.Add("1\n2,3"));
+        }
     }
 }
