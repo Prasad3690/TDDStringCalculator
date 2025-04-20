@@ -32,6 +32,7 @@ namespace StringCalculator.App
 
             var splitNumbers = numbers.Split(delimiters.ToArray(), StringSplitOptions.None)
                                    .Select(int.Parse)
+                                   .Where(n => n <= 1000)
                                    .ToList();
 
             var negatives = splitNumbers.Where(n => n < 0).ToList();

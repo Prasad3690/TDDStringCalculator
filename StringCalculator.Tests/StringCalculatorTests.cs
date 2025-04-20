@@ -83,5 +83,11 @@ namespace StringCalculator.Tests
             Assert.AreEqual("1,2", receivedInput);
             Assert.AreEqual(3, receivedResult);
         }
+
+        [TestMethod]
+        public void Add_NumbersGreaterThan1000_IgnoredInSum()
+        {
+            Assert.AreEqual(2, _calculator.Add("2,1001"));
+        }
     }
 }
