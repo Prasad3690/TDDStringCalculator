@@ -25,9 +25,18 @@ namespace StringCalculator.App
             // Check for custom delimiter
             if (numbers.StartsWith("//"))
             {
-                var parts = numbers.Split('\n');
-                delimiters.Add(parts[0].Substring(2)); // Extract delimiter after "//"
-                numbers = numbers.Substring(parts[0].Length + 1);
+                var match = Regex.Match(numbers, @"^//\[(.+?)\]\n");
+                if (match.Success)
+                {
+                    delimiters.Add(match.Groups[1].Value); // Extract custom delimiter
+                    numbers = numbers.Substring(match.Value.Length);
+                }
+                else
+                {
+                    var parts = numbers.Split('\n');
+                    delimiters.Add(parts[0].Substring(2)); // Extract delimiter after "//"
+                    numbers = numbers.Substring(parts[0].Length + 1);
+                }
             }
 
             var splitNumbers = numbers.Split(delimiters.ToArray(), StringSplitOptions.None)

@@ -89,5 +89,11 @@ namespace StringCalculator.Tests
         {
             Assert.AreEqual(2, _calculator.Add("2,1001"));
         }
+
+        [TestMethod]
+        public void Add_CustomDelimiterOfAnyLength_ReturnsSum()
+        {
+            Assert.AreEqual(6, _calculator.Add("//[***]\n1***2\n3"));
+        }
     }
 }
