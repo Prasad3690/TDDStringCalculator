@@ -24,8 +24,17 @@ namespace StringCalculator.App
                 numbers = numbers.Substring(parts[0].Length + 1);
             }
 
-            var splitNumbers = numbers.Split(delimiters.ToArray(), StringSplitOptions.None);
-            return splitNumbers.Select(int.Parse).Sum();
+            var splitNumbers = numbers.Split(delimiters.ToArray(), StringSplitOptions.None)
+                                   .Select(int.Parse)
+                                   .ToList();
+
+            var negatives = splitNumbers.Where(n => n < 0).ToList();
+            if (negatives.Any())
+            {
+                throw new ArgumentException($"negatives not allowed: {string.Join(", ", negatives)}");
+            }
+
+            return splitNumbers.Sum();
         }
     }
 }

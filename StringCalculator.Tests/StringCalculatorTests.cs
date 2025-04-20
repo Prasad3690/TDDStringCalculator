@@ -50,5 +50,12 @@ namespace StringCalculator.Tests
         {
             Assert.AreEqual(6, _calculator.Add("//;\n1\n2;3"));
         }
+
+        [TestMethod]
+        public void Add_NegativeNumbers_ThrowsException()
+        {
+            var ex = Assert.ThrowsException<ArgumentException>(() => _calculator.Add("1,-2,-3,4,-5"));
+            StringAssert.Contains(ex.Message, "negatives not allowed: -2, -3, -5");
+        }
     }
 }
