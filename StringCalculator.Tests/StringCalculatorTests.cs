@@ -26,5 +26,11 @@ namespace StringCalculator.Tests
         {
             Assert.AreEqual(1, _calculator.Add("1"));
         }
+
+        [TestMethod]
+        public void Add_TwoNumbers_ReturnsSum()
+        {
+            Assert.AreEqual(3, _calculator.Add("1,2"));
+        }
     }
 }
